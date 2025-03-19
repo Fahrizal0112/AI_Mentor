@@ -12,3 +12,21 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Business {
+  id        String   @id @default(cuid())
+  userId    String
+  name      String
+  revenue   Float
+  expenses  Float
+  customers Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Analysis {
+  id         String   @id @default(cuid())
+  businessId String
+  content    String
+  createdAt  DateTime @default(now())
+}
